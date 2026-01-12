@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Portal</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #5c87c0, #764ba2);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: #fff;
+            width: 550px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .question {
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .options label {
+            display: block;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options label:hover {
+            background: #dbe4ff;
+        }
+
+        button {
+            background: #4489e2;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .progress {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    
+    <div id="userSection" class="section" style="display:block;">
+        <h2>Welcome to Quiz Portal</h2>
+
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Enter your name">
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="contact" placeholder="Enter contact number">
+        </div>
+
+        <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <!-- HTML QUIZ -->
+    <div id="htmlQuiz" class="section">
+        <h2>HTML Quiz</h2>
+        <div class="progress">Step 2 of 4</div>
+
+        <div class="question">1. What does HTML stand for?</div>
+        <div class="options">
+            <label><input type="radio" name="h1"> Hyper Text Markup Language</label>
+            <label><input type="radio" name="h1"> High Text Machine Language</label>
+            <label><input type="radio" name="h1"> Hyperlink Mark Language</label>
+            <label><input type="radio" name="h1"> None</label>
+        </div>
+
+        <div class="question">2. Which tag is used for hyperlinks?</div>
+        <div class="options">
+            <label><input type="radio" name="h2"> &lt;link&gt;</label>
+            <label><input type="radio" name="h2"> &lt;a&gt;</label>
+            <label><input type="radio" name="h2"> &lt;href&gt;</label>
+            <label><input type="radio" name="h2"> &lt;url&gt;</label>
+        </div>
+
+        <div class="question">3. Which tag inserts a line break?</div>
+        <div class="options">
+            <label><input type="radio" name="h3"> &lt;lb&gt;</label>
+            <label><input type="radio" name="h3"> &lt;br&gt;</label>
+            <label><input type="radio" name="h3"> &lt;break&gt;</label>
+            <label><input type="radio" name="h3"> &lt;p&gt;</label>
+        </div>
+
+        <button onclick="showCSS()">Next → CSS Quiz</button>
+    </div>
+
+    <!-- CSS QUIZ -->
+    <div id="cssQuiz" class="section">
+        <h2>CSS Quiz</h2>
+        <div class="progress">Step 3 of 4</div>
+
+        <div class="question">1. What does CSS stand for?</div>
+        <div class="options">
+            <label><input type="radio" name="c1"> Creative Style Sheets</label>
+            <label><input type="radio" name="c1"> Cascading Style Sheets</label>
+            <label><input type="radio" name="c1"> Computer Style Sheets</label>
+            <label><input type="radio" name="c1"> Colorful Style Sheets</label>
+        </div>
+
+        <div class="question">2. Which property changes text color?</div>
+        <div class="options">
+            <label><input type="radio" name="c2"> font-color</label>
+            <label><input type="radio" name="c2"> text-color</label>
+            <label><input type="radio" name="c2"> color</label>
+            <label><input type="radio" name="c2"> bgcolor</label>
+        </div>
+
+        <div class="question">3. Which selector uses # symbol?</div>
+        <div class="options">
+            <label><input type="radio" name="c3"> Class</label>
+            <label><input type="radio" name="c3"> ID</label>
+            <label><input type="radio" name="c3"> Element</label>
+            <label><input type="radio" name="c3"> Universal</label>
+        </div>
+
+        <button onclick="showBootstrap()">Next → Bootstrap Quiz</button>
+    </div>
+
+    <!-- BOOTSTRAP QUIZ -->
+    <div id="bootstrapQuiz" class="section">
+        <h2>Bootstrap Quiz</h2>
+        <div class="progress">Step 4 of 4</div>
+
+        <div class="question">1. Bootstrap is a ____ framework.</div>
+        <div class="options">
+            <label><input type="radio" name="b1"> Backend</label>
+            <label><input type="radio" name="b1"> Frontend</label>
+            <label><input type="radio" name="b1"> Database</label>
+            <label><input type="radio" name="b1"> Server</label>
+        </div>
+
+        <div class="question">2. Which class makes a blue button?</div>
+        <div class="options">
+            <label><input type="radio" name="b2"> btn-success</label>
+            <label><input type="radio" name="b2"> btn-primary</label>
+            <label><input type="radio" name="b2"> btn-danger</label>
+            <label><input type="radio" name="b2"> btn-dark</label>
+        </div>
+
+        <div class="question">3. Bootstrap grid has how many columns?</div>
+        <div class="options">
+            <label><input type="radio" name="b3"> 10</label>
+            <label><input type="radio" name="b3"> 12</label>
+            <label><input type="radio" name="b3"> 16</label>
+            <label><input type="radio" name="b3"> 8</label>
+        </div>
+
+        <button onclick="finishQuiz()">Finish Quiz</button>
+    </div>
+
+</div>
+
+<script>
+    function startQuiz() {
+        sessionStorage.setItem("name", name.value);
+        sessionStorage.setItem("contact", contact.value);
+
+        userSection.style.display = "none";
+        htmlQuiz.style.display = "block";
+    }
+
+    function showCSS() {
+        htmlQuiz.style.display = "none";
+        cssQuiz.style.display = "block";
+    }
+
+    function showBootstrap() {
+        cssQuiz.style.display = "none";
+        bootstrapQuiz.style.display = "block";
+    }
+
+    function finishQuiz() {
+        alert(
+            "Quiz Completed 🎉\n\nName: " +
+            sessionStorage.getItem("name") +
+            "\nContact: " +
+            sessionStorage.getItem("contact")
+        );
+    }
+</script>
+
+</body>
+</html>
