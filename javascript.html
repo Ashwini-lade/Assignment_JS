@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Practice – Call Stack, Async, Arrays, DOM</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f4f6f8;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h2>JavaScript Practice – Part 1</h2>
+
+<button id="btn">Click for Call Stack Demo</button>
+<ul id="list"></ul>
+
+<form id="myForm">
+    <input type="text" id="input" placeholder="Enter something">
+    <button type="submit">Submit</button>
+    <p id="error" style="color:red;"></p>
+</form>
+
+<script>
+/*1st assignment*/
+
+document.getElementById("btn").addEventListener("click", () => {
+    console.log("Start");
+    setTimeout(() => console.log("Async Task"), 0);
+    console.log("End");
+});
+
+
+
+/*3rd assignmnet*/
+let response = '{"id":101,"name":"Laptop","price":50000}';
+let obj = JSON.parse(response);
+console.log(obj.name); // Laptop
+
+/*4th assignment*/
+let user = { username: "admin", role: "manager" };
+let jsonString = JSON.stringify(user);
+localStorage.setItem("user", jsonString);
+
+/*5th assignment*/
+let users = ["Ashwini", "Rahul", "Sneha"];
+users.forEach(user => {
+    console.log("Welcome " + user);
+});
+
+/*6th assginment*/
+let prices = [1000, 2000, 3000];
+let discounted = prices.map(p => p - p * 0.1);
+console.log(discounted);
+
+/*7th assignment*/
+let products = [
+    { name: "Pen", inStock: true },
+    { name: "Book", inStock: false },
+    { name: "Laptop", inStock: true }
+];
+let available = products.filter(p => p.inStock);
+console.log(available);
+
+/*8 th assignment*/
+let cart = [500, 1500, 2000];
+let total = cart.reduce((sum, price) => sum + price, 0);
+console.log("Total:", total);
+
+/*9th assignment*/
+
+function calculateGST(price) {
+    return price * 0.18;
+}
+
+const calculateGSTArrow = price => price * 0.18;
+
+/*10th assignment*/
+function counter() {
+    let count = 0;
+    return function () {
+        count++;
+        return count;
+    };
+}
+let myCounter = counter();
+console.log(myCounter());
+console.log(myCounter());
+
+/*11 th assignment*/
+function login(user, callback) {
+    if (user === "admin") {
+        callback("Login Successful");
+    } else {
+        callback("Invalid User");
+    }
+}
+
+login("admin", message => console.log(message));
+
+
+
+/*13 th assignment*/
+async function fetchData() {
+    let res = await fetch("https://jsonplaceholder.typicode.com/users");
+    let data = await res.json();
+    console.log(data);
+}
+fetchData();
+
+/*14th assignment*/
+let li = document.createElement("li");
+li.textContent = "New Item Added";
+document.getElementById("list").appendChild(li);
+
+/*15th assignemnt*/
+document.getElementById("myForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    let value = document.getElementById("input").value;
+    if (value === "") {
+        document.getElementById("error").innerText = "Input required!";
+    } else {
+        document.getElementById("error").innerText = "";
+        alert("Form submitted");
+    }
+});
+</script>
+
+</body>
+</html>
